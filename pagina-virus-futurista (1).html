@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Centro de Defensa
+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #10151f, #1a1f2e);
+      color: #c0f0ff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #141a28;
+      box-shadow: 0 2px 10px #0ff2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #00eaff;
+    }
+
+    nav {
+      background: #111827;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 1rem;
+    }
+
+    nav button {
+      background: #00eaff33;
+      border: 1px solid #00eaff;
+      color: #00eaff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: #00eaff;
+      color: #111;
+    }
+
+    section {
+      padding: 2rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      background: #1e2633;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff3;
+    }
+
+    h2 {
+      color: #00eaff;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    .scan-area {
+      background: #111920;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px #00eaff66;
+    }
+
+    .progress-bar {
+      width: 100%;
+      background: #2e3b4d;
+      border-radius: 20px;
+      height: 25px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(to right, #00eaff, #0fc);
+      animation: scan 5s linear forwards;
+    }
+
+    @keyframes scan {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .mascota {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 120px;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .burbuja {
+      background: #222b3c;
+      color: #aaf;
+      padding: 10px;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px #0ff3;
+      margin-bottom: 5px;
+      max-width: 180px;
+      animation: aparecer 1s ease;
+    }
+
+    @keyframes aparecer {
+      0% { transform: translateY(10px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #888;
+      background: #111;
+    }
+
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #00eaff33;
+      border: 1px solid #00eaff;
+      color: #00eaff;
+      padding: 10px 15px;
+      border-radius: 15px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🧠 Centro de Protección contra Virus Informáticos
+</h1>
+    <p>Tu escudo contra virus informáticos. Aprende y actúa.</p>
+  </header>
+
+  <nav>
+    <button onclick="irA('sintomas')">Síntomas</button>
+    <button onclick="irA('soluciones')">Soluciones</button>
+    <button onclick="irA('herramientas')">Herramientas</button>
+    <button onclick="irA('escaneo')">Escáner</button>
+  </nav>
+
+  <section id="sintomas">
+    <h2>🦠 Síntomas de virus en tu computadora</h2>
+    <ul>
+      <li>Lentitud inesperada.</li>
+      <li>Ventanas emergentes constantes.</li>
+      <li>Programas que se abren solos.</li>
+      <li>Archivos que desaparecen.</li>
+    </ul>
+  </section>
+
+  <section id="soluciones">
+    <h2>🛠 Soluciones rápidas</h2>
+    <ul>
+      <li>Desconecta internet inmediatamente.</li>
+      <li>Ejecuta el modo seguro.</li>
+      <li>Pasa un antivirus confiable.</li>
+      <li>Restaura el sistema si es necesario.</li>
+    </ul>
+  </section>
+
+  <section id="herramientas">
+    <h2>🔧 Herramientas útiles</h2>
+    <ul>
+      <li><a href="https://www.malwarebytes.com" target="_blank">Malwarebytes</a></li>
+      <li><a href="https://www.avast.com" target="_blank">Avast Free Antivirus</a></li>
+      <li><a href="https://www.bitdefender.com" target="_blank">Bitdefender</a></li>
+    </ul>
+  </section>
+
+  <section id="escaneo">
+    <h2>🔍 Escáner Simulado</h2>
+    <div class="scan-area">
+      <button onclick="iniciarEscaneo()">Iniciar Escaneo</button>
+      <div class="progress-bar"><div class="progress" id="barra"></div></div>
+      <p id="resultado"></p>
+    </div>
+  </section>
+
+  <!-- Mascota animada -->
+  <div class="mascota">
+    <div class="burbuja" id="burbuja">¡Hola! Soy tu guía. Desliza para aprender cómo proteger tu PC.</div>
+    <lottie-player src="https://lottie.host/9c429e9f-9a7b-4fc9-87b7-b6fa2d14e184/Z9KXylT2sA.json"
+                   background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay>
+    </lottie-player>
+  </div>
+
+  <!-- Botón control de música -->
+  <div class="music-control" onclick="toggleMusica()">🎵 Pausar música</div>
+  <audio id="musica" src="https://cdn.pixabay.com/download/audio/2022/03/31/audio_6a6181c646.mp3" autoplay loop></audio>
+
+  <footer>
+    Proyecto educativo 2025 — Defensa digital y prevención de virus.
+  </footer>
+
+  <script>
+    function irA(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function iniciarEscaneo() {
+      document.getElementById("barra").style.animation = "scan 5s linear forwards";
+      document.getElementById("resultado").textContent = "";
+      setTimeout(() => {
+        document.getElementById("resultado").textContent = "✅ No se encontraron amenazas.";
+      }, 5200);
+      mostrarMensaje("Escaneando tu sistema... ¡espera!");
+    }
+
+    function toggleMusica() {
+      const audio = document.getElementById("musica");
+      if (audio.paused) {
+        audio.play();
+        document.querySelector(".music-control").textContent = "🎵 Pausar música";
+      } else {
+        audio.pause();
+        document.querySelector(".music-control").textContent = "🎵 Reproducir música";
+      }
+    }
+
+    const mensajes = [
+      "¡Hola! Soy tu guía. Desliza para aprender cómo proteger tu PC.",
+      "¿Sabías que el modo seguro puede ayudarte a eliminar virus?",
+      "Recuerda mantener tu antivirus actualizado siempre.",
+      "Usa herramientas como Malwarebytes para escanear mejor.",
+      "Escanea tu sistema con el botón y revisa resultados."
+    ];
+    let indice = 0;
+
+    window.addEventListener("scroll", () => {
+      indice = (indice + 1) % mensajes.length;
+      mostrarMensaje(mensajes[indice]);
+    });
+
+    function mostrarMensaje(texto) {
+      const burbuja = document.getElementById("burbuja");
+      burbuja.textContent = texto;
+      burbuja.style.animation = "none";
+      burbuja.offsetHeight;
+      burbuja.style.animation = "aparecer 1s ease";
+    }
+  </script>
+</body>
+</html>
